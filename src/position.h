@@ -185,6 +185,7 @@ public:
 #endif
 #ifdef CRAZYHOUSE
   bool is_house() const;
+  template<PieceType Pt> int count_in_hand(Color c) const;
   int count_in_hand(Color c, PieceType pt) const;
   void add_to_hand(Color c, PieceType pt);
   void remove_from_hand(Color c, PieceType pt);
@@ -626,6 +627,9 @@ inline bool Position::is_house() const {
   return var == CRAZYHOUSE_VARIANT;
 }
 
+template<PieceType Pt> inline int Position::count_in_hand(Color c) const {
+  return pieceCountInHand[c][Pt];
+}
 inline int Position::count_in_hand(Color c, PieceType pt) const {
   return pieceCountInHand[c][pt];
 }
